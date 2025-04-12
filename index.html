@@ -83,10 +83,10 @@
       const users = JSON.parse(localStorage.getItem("usuarios")) || {};
 
       // Validar credenciales
-      if (users[username] === username && users[username].password === password) {
+      if (users[username] && users[username].password === password) {
         // Guardar datos del usuario en localStorage
-        localStorage.setItem("username", username);
-        localStorage.setItem("rol", users[username].role);
+        script.js.setItem("username", username);
+        script.js.setItem("rol", users[username].role);
 
         // Redirigir según el rol del usuario
         if (users[username].role === "admin") {
