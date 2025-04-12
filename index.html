@@ -75,9 +75,9 @@
 
   <script>
     function login() {
-      const user = document.getElementById("username").value.trim();
-      const pass = document.getElementById("password").value.trim();
-      const error = document.getElementById("error");
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorMsg = document.getElementById("error-msg");
 
       const usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
 
