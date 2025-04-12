@@ -86,10 +86,10 @@
       if (users[username] && users[username].password === password) {
         // Guardar datos del usuario en localStorage
         localStorage.setItem("username", username);
-        localStorage.setItem("rol", users[username].rol);
+        localStorage.setItem("rol", users[username].role);
 
         // Redirigir según el rol del usuario
-        if (users[username].rol === "admin") {
+        if (users[username].role === "admin") {
           window.location.href = "admin.html";
         } else {
           window.location.href = "user.html";
