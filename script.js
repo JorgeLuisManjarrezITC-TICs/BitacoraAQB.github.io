@@ -2,7 +2,7 @@
 
 // Lista de usuarios (en un entorno real, esto debería estar en una base de datos)
 const users = [
-  { username: "admin", password: "Jorge2025#", role: "admin" }
+  { username: "admin", password: "admin", role: "admin" }
 ];
 
 function login() {
