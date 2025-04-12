@@ -81,10 +81,10 @@
 
       const usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
 
-      if (usuarios[user] && usuarios[user].password === pass) {
-        localStorage.setItem("username", user);
-        localStorage.setItem("rol", usuarios[user].rol);
-        if (usuarios[user].rol === "admin") {
+      if (usuarios[username] && usuarios[username].password === pass) {
+        localStorage.setItem("username", username);
+        localStorage.setItem("rol", usuarios[username].rol);
+        if (usuarios[username].rol === "admin") {
           window.location.href = "admin.html";
         } else {
           window.location.href = "user.html";
