@@ -73,33 +73,7 @@
     <p class="mensaje-error" id="error"></p>
   </div>
 
-  <script>
-    function login() {
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const errorMsg = document.getElementById("error");
-
-      // Recuperar usuarios desde localStorage
-      const users = JSON.parse(localStorage.getItem("usuarios")) || {};
-
-      // Validar credenciales
-      if (users[username] && users[username].password === password) {
-        // Guardar datos del usuario en localStorage
-        script.js.setItem("username", username);
-        script.js.setItem("rol", users[username].role);
-
-        // Redirigir según el rol del usuario
-        if (users[username].role === "admin") {
-          window.location.href = "admin.html";
-        } else {
-          window.location.href = "user.html";
-        }
-      } else {
-        // Mostrar mensaje de error
-        errorMsg.textContent = "Usuario o contraseña incorrectos.";
-      }
-    }
-</script>
+  <script src="script.js"></script>
 
 
 
