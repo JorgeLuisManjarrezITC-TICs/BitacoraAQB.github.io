@@ -1,88 +1,159 @@
-Body {
-    font-family: Arial, sans-serif;
-    background-color: #f1f1f1;
-    display: flex;
-    justify-self: center;
-    align-self: center;
-    height: 100vh;
-
+/* Reset básico (tomado de login.txt) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.login-container {
-    background: white ;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-
+body {
+  font-family: 'Roboto', sans-serif; /* Usando la fuente de login.txt */
+  display: flex;
+  height: 100vh;
+  background-color: #f5f7fa; /* Usando el color de fondo de login.txt */
+  color: #333; /* Usando el color de texto de login.txt */
+  /* Eliminé el estilo duplicado de 'align-items' y 'justify-content' */
 }
 
-input {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-    width: 200px;
+.container {
+  display: flex;
+  width: 100%; /* Usando el ancho del container de login.txt */
+  /* Eliminé el estilo duplicado de 'height' */
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .error {
-    color: red;
-    margin-top: 10px;
-  }
+/* Estilo de menú lateral (unificado de style.txt y login.txt) */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(to bottom, #088a40, #02679c); /* Gradiente de login.txt */
+  padding: 30px 20px; /* Padding de login.txt */
+  color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Box-shadow de login.txt */
+}
 
-  .container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .sidebar {
-    width: 250px;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-  }
-  
-  .sidebar h2 {
-    color: #fff;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    margin: 15px 0;
-  }
-  
-  .sidebar a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .main-content {
-    flex: 1;
-    padding: 40px;
-  }
-  
-  form input {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
-    width: 300px;
-  }
-  
-  form button {
-    padding: 10px 20px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
+.sidebar h2 {
+  font-size: 24px; /* Font-size de login.txt */
+  margin-bottom: 30px; /* Margin-bottom de login.txt */
+  text-align: center; /* Text-align de login.txt */
+  color: #fff; /* Color de style.txt */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0; /* Añadido de style.txt */
+}
+
+.sidebar ul li {
+  margin: 20px 0; /* Margin de login.txt */
+  margin: 15px 0; /* Sobreescrito por style.txt */
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px; /* Font-size de login.txt */
+  display: block; /* Display de login.txt */
+  padding: 10px; /* Padding de login.txt */
+  border-radius: 5px; /* Border-radius de login.txt */
+  transition: background 0.2s; /* Transition de login.txt */
+}
+
+.sidebar ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Hover de login.txt */
+}
+
+/* Estilo del contenido principal (unificado de style.txt y login.txt) */
+.main-content {
+  flex-grow: 1; /* Flex-grow de login.txt */
+  padding: 40px; /* Padding de login.txt */
+  background-color: #ffffff; /* Background-color de login.txt */
+  overflow-y: auto; /* Overflow-y de login.txt */
+}
+
+.main-content h2 {
+  font-size: 24px; /* Font-size de login.txt */
+  margin-bottom: 20px; /* Margin-bottom de login.txt */
+}
+
+/* Estilos de formulario (unificado) */
+form input,
+form select,
+form textarea {
+  width: 100%; /* Ancho completo */
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  display: block;
+  margin: 10px 0;
+}
+
+form button {
+  background-color: #008c3f;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #007034;
+}
+
+/* Estilos específicos */
+.login-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  width: 320px;
+  text-align: center;
+  margin:auto;
+}
+
+.login-box img {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background-color: #008c3f;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.login-box button:hover {
+  background-color: #007034;
+}
+
+.mensaje-error {
+  color: red;
+  margin-top: 10px;
+}
+
+#mensaje {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
