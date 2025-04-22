@@ -1,25 +1,15 @@
+const form = document.getElementById('registerForm');
+const msg = document.getElementById('msg');
 
-    const form = document.getElementById('registerForm');
-    const msg = document.getElementById('msg');
-
-    function getUsers() {
-      const users = localStorage.getItem('users');
-      return users ? JSON.parse(users) : [{ username: "admin", password: "admin123", role: "admin" }];
-    }
-
-    function saveUsers(users) {
-      localStorage.setItem('users', JSON.stringify(users));
-    }
-
+localStorage.setItem("username", user.username); // Guardar
+const username = localStorage.getItem("username"); // Obtener
 
     function logout() {
       localStorage.clear();
       window.location.href = "index.html";
     }
 
-const username = localStorage.getItem("username");
 const nombreUsuario = document.getElementById("username");
-
 const fechaActual = document.getElementById("fecha");
 console.log("username:", username);
 console.log("nombreUsuario:", nombreUsuario);
@@ -46,39 +36,6 @@ function mostrarFormulario() {
 
 bienvenidaDiv.addEventListener("click", mostrarFormulario);
 
-//mostrarRecargaForm.addEventListener("click", function() {
-//  form.style.display = "block";
-//  mostrarRecargaForm.style.display = "none";
-//});
-
-//form.addEventListener("submit", function (e) {
-//  e.preventDefault();
-//
-//  const nuevaRecarga = {
-//    fecha: document.getElementById("fecha").value,
-//    litros: parseFloat(document.getElementById("litros").value),
-//    monto: parseFloat(document.getElementById("monto").value)
-//  };
-//
-//  guardarRecarga(nuevaRecarga);
-//  mensaje.textContent = "Recarga guardada correctamente.";
-//  mensaje.style.color = "green";
-//  form.reset();
-//});
-
-function obtenerRecargas() {
-    const datos = localStorage.getItem("recargas");
-    return datos ? JSON.parse(datos) : {};
-}
-
-function guardarRecarga(recarga) {
-    const recargas = obtenerRecargas();
-    if (!recargas[username]) {
-        recargas[username] = [];
-    }
-    recargas[username].push(recarga);
-    localStorage.setItem("recargas", JSON.stringify(recargas));
-}
 
 function logout() {
     localStorage.clear();
