@@ -22,14 +22,21 @@
     </aside>
 
     <main class="main-content">
-      <div class="login-box">  <h2>Registrar nuevo usuario</h2>
-          <form id="registerForm">
-              <input type="text" id="newUsername" placeholder="Nombre de usuario" required />
-              <input type="password" id="newPassword" placeholder="Contraseña" required />
-              <button type="submit">Crear usuario</button>
+      <div class="login-box">
+          <div id="bienvenida">  <img src="ruta/a/tu/foto.jpg" alt="Foto de perfil">
+              <h2>¡Bienvenido!</h2>
+              <p>Usuario: <span id="nombreUsuario"></span></p>
+          </div>
+          <h2>Ingresar recarga de gasolina</h2>
+          <form id="recargaForm">
+              <input type="date" id="fecha" required />
+              <input type="number" id="litros" placeholder="Litros" step="0.01" required />
+              <input type="number" id="monto" placeholder="Monto ($)" step="0.01" required />
+              <button type="submit">Guardar recarga</button>
           </form>
-          <p id="msg"></p>
-      </div>  </main>
+          <p id="mensaje"></p>
+      </div>
+  </main>
   </div>
 
   <script>

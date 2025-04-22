@@ -20,7 +20,12 @@
     </aside>
 
     <main class="main-content">
-      <div class="login-box">  <h2>Ingresar recarga de gasolina</h2>
+      <div class="login-box">
+          <div id="bienvenida">  <img src="ruta/a/tu/foto.jpg" alt="Foto de perfil">
+              <h2>¡Bienvenido!</h2>
+              <p>Usuario: <span id="nombreUsuario"></span></p>
+          </div>
+          <h2>Ingresar recarga de gasolina</h2>
           <form id="recargaForm">
               <input type="date" id="fecha" required />
               <input type="number" id="litros" placeholder="Litros" step="0.01" required />
@@ -28,7 +33,8 @@
               <button type="submit">Guardar recarga</button>
           </form>
           <p id="mensaje"></p>
-      </div>  </main>
+      </div>
+  </main>
   </div>
 
   <script>
