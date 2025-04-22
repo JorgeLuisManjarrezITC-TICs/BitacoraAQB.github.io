@@ -15,9 +15,6 @@ console.log("username:", username);
 console.log("nombreUsuario:", nombreUsuario);
 console.log("fechaActual:", fechaActual);
 
-//const mostrarRecargaForm = document.getElementById("mostrarRecargaForm");
-//const form = document.getElementById("recargaForm");
-//const mensaje = document.getElementById("mensaje");
 const bienvenidaDiv = document.getElementById("bienvenida");
 function mostrarFechaActual() {
     const now = new Date();
@@ -26,16 +23,7 @@ function mostrarFechaActual() {
     const day = String(now.getDate()).padStart(2, '0');
     fechaActual.textContent = `${day}-${month}-${year}`;
 }
-
 mostrarFechaActual();
-
-function mostrarFormulario() {
-    //form.style.display = "block";
-    bienvenidaDiv.style.display = "none";
-}
-
-bienvenidaDiv.addEventListener("click", mostrarFormulario);
-
 
 function logout() {
     localStorage.clear();
