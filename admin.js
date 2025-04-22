@@ -18,8 +18,8 @@
     }
 
 const username = localStorage.getItem("username");
-const nombreUsuario = document.getElementById("nombreUsuario");
-nombreUsuario.textContent = username;
+const nombreUsuario = document.getElementById("username");
+
 const fechaActual = document.getElementById("fecha");
 console.log("username:", username);
 console.log("nombreUsuario:", nombreUsuario);
