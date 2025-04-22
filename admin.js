@@ -38,16 +38,12 @@
     }
 
 const username = localStorage.getItem("username");
-const nombreUsuario = document.getElementById("nombreUsuario");
-nombreUsuario.textContent = username;
+
 const fechaActual = document.getElementById("fecha");
 //const mostrarRecargaForm = document.getElementById("mostrarRecargaForm");
 //const form = document.getElementById("recargaForm");
 //const mensaje = document.getElementById("mensaje");
 const bienvenidaDiv = document.getElementById("bienvenida");
-
-nombreUsuario.textContent = username;
-
 function mostrarFechaActual() {
     const now = new Date();
     const year = now.getFullYear();
