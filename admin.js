@@ -38,7 +38,7 @@
     }
 
 const username = localStorage.getItem("username");
-const nombreUsuario = document.getElementById("username");
+const nombreUsuario = document.getElementById("nombreUsuario");
 const fechaActual = document.getElementById("fecha");
 //const mostrarRecargaForm = document.getElementById("mostrarRecargaForm");
 //const form = document.getElementById("recargaForm");
