@@ -187,15 +187,16 @@ form button:hover {
   margin-bottom: 10px;
 }
 
-#bienvenida h2 {
+#fechaActual {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#fechaActual h2 {
   font-size: 20px;
   margin-bottom: 5px;
 }
 
-#bienvenida p {
+#fechaActual p {
   font-size: 16px;
-}
-
-#recargaForm {
-display: none;
 }
