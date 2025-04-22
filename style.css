@@ -172,3 +172,30 @@ form button:hover {
   /* ... (estilos existentes) ... */
   margin: 20px auto; /* Ajustar el margen para centrarlo en main-content */
 }
+
+#bienvenida {
+  text-align: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+#bienvenida img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+#bienvenida h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+#bienvenida p {
+  font-size: 16px;
+}
+
+#recargaForm {
+display: none;
+}
