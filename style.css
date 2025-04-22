@@ -157,3 +157,18 @@ form button:hover {
   color: red;
   margin-top: 10px;
 }
+
+.main-content {
+  flex-grow: 1;
+  padding: 40px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  display: flex; /* Añadido para centrar el login-box */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}
+
+.login-box {
+  /* ... (estilos existentes) ... */
+  margin: 20px auto; /* Ajustar el margen para centrarlo en main-content */
+}
