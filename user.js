@@ -37,7 +37,8 @@
       window.location.href = "index.html";
     }
 
-    const nombreUsuario = document.getElementById("username");
+    const nombreUsuario = document.getElementById("nombreUsuario");
+    nombreUsuario.textContent = username;
     const fechaActual = document.getElementById("fecha");
     //const mostrarRecargaForm = document.getElementById("mostrarRecargaForm");
     //const form = document.getElementById("recargaForm");
