@@ -19,6 +19,7 @@
 
 const username = localStorage.getItem("username");
 const nombreUsuario = document.getElementById("nombreUsuario");
+nombreUsuario.textContent = username;
 const fechaActual = document.getElementById("fecha");
 console.log("username:", username);
 console.log("nombreUsuario:", nombreUsuario);
@@ -33,7 +34,7 @@ function mostrarFechaActual() {
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
-    fechaActual.textContent = `${year}-${month}-${day}`;
+    fechaActual.textContent = `${day}-${month}-${year}`;
 }
 
 mostrarFechaActual();
