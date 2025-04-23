@@ -29,3 +29,224 @@ function logout() {
     localStorage.clear();
     window.location.href = "index.html";
 }
+
+const contentContainer = document.getElementById('content-container');
+const messageContainer = document.getElementById('message-container');
+
+function loadSection(section) {
+  let url = '';
+  if (section === 'register') {
+    url = 'admin_register_user.html';
+    loadRegisterUser();
+  } else if (section === 'manage') {
+    url = 'admin_manage_users.html';
+    loadManageUsers();
+  }
+
+  fetch(url)
+    .then(response => response.text())
+    .then(html => {
+      contentContainer.innerHTML = html;
+      if (section === 'register') {
+        initRegisterForm();
+      } else if (section === 'manage') {
+        initManageUsers();
+      }
+    })
+    .catch(error => {
+      console.error('Error al cargar la sección:', error);
+      contentContainer.innerHTML = '<p>Error al cargar el contenido.</p>';
+    });
+}
+
+function displayMessage(message, isError = false) {
+  messageContainer.innerHTML = `<p class="<span class="math-inline">\{isError ? 'mensaje\-error' \: 'mensaje\-confirmacion'\}"\></span>{message}</p>`;
+  setTimeout(() => messageContainer.innerHTML = '', 3000);
+}
+
+function initRegisterForm() {
+  const form = document.getElementById('registerForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('newUsername').value.trim();
+      const password = document.getElementById('newPassword').value.trim();
+
+      const users = getUsers();
+
+      if (users.find(u => u.username === username)) {
+        displayMessage("Ese usuario ya existe.", true);
+        return;
+      }
+
+      users.push({ username, password, role: "user", active: true });
+      saveUsers(users);
+
+      displayMessage("Usuario creado exitosamente.");
+      form.reset();
+    });
+  }
+}
+
+function loadManageUsers() {
+  fetch('admin_manage_users.html')
+    .then(response => response.text())
+    .then(html => {
+      contentContainer.innerHTML = html;
+      initManageUsers();
+    })
+    .catch(error => {
+      console.error('Error al cargar la sección de administrar usuarios:', error);
+      contentContainer.innerHTML = '<p>Error al cargar el contenido.</p>';
+    });
+}
+
+function initManageUsers() {
+  const userSelect = document.getElementById('user-select');
+  const toggleStatusBtn = document.getElementById('toggle-status-btn');
+  const deleteUserBtn = document.getElementById('delete-user-btn');
+  const editUserBtn = document.getElementById('edit-user-btn');
+  const deleteConfirmation = document.getElementById('delete-confirmation');
+  const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+  const editFormContainer = document.getElementById('edit-user-form-container');
+  const editForm = document.getElementById('edit-user-form');
+  const togglePasswordEditBtn = document.getElementById('toggle-password-edit');
+  const toggleConfirmPasswordEditBtn = document.getElementById('toggle-confirm-password-edit');
+
+  const users = getUsers();
+
+  // Llenar el selector de usuarios
+  users.forEach(user => {
+    if (user.role !== 'admin') { // No mostrar al admin en la lista
+      const option = document.createElement('option');
+      option.value = user.username;
+      option.textContent = user.username;
+      userSelect.appendChild(option);
+    }
+  });
+
+  toggleStatusBtn.addEventListener('click', toggleUserStatus);
+  deleteUserBtn.addEventListener('click', showDeleteConfirmation);
+  editUserBtn.addEventListener('click', showEditForm);
+  confirmDeleteBtn.addEventListener('click', performDeleteUser);
+  editForm.addEventListener('submit', saveEditedUser);
+  togglePasswordEditBtn.addEventListener('click', togglePasswordVisibility);
+  toggleConfirmPasswordEditBtn.addEventListener('click', toggleConfirmPasswordVisibility);
+}
+
+function toggleUserStatus() {
+  const selectedUsername = document.getElementById('user-select').value;
+  if (!selectedUsername) {
+    displayMessage("Por favor, seleccione un usuario.", true);
+    return;
+  }
+
+  const users = getUsers();
+  const user = users.find(u => u.username === selectedUsername);
+  if (user) {
+    user.active = !user.active;
+    saveUsers(users);
+    loadManageUsers(); // Recargar la sección para actualizar la lista
+    displayMessage(`Usuario ${selectedUsername} ${user.active ? 'activado' : 'desactivado'}.`);
+  }
+}
+
+function showEditForm() {
+  const selectedUsername = document.getElementById('user-select').value;
+  if (!selectedUsername) {
+    displayMessage("Por favor, seleccione un usuario.", true);
+    return;
+  }
+
+  const users = getUsers();
+  const user = users.find(u => u.username === selectedUsername);
+  if (user) {
+    document.getElementById('edit-user-form-container').style.display = 'block';
+    document.getElementById('edit-nombre').value = user.username;
+    document.getElementById('edit-tipo-perfil').value = user.role;
+    document.getElementById('edit-celular').value = user.celular || '';
+    document.getElementById('edit-correo').value = user.correo || '';
+    document.getElementById('edit-contrasena').value = '';
+    document.getElementById('edit-confirmar-contrasena').value = '';
+  }
+}
+
+function saveEditedUser(e) {
+  e.preventDefault();
+  const selectedUsername = document.getElementById('user-select').value;
+  const users = getUsers();
+  const userIndex = users.findIndex(u => u.username === selectedUsername);
+
+  if (userIndex !== -1) {
+    users[userIndex].username = document.getElementById('edit-nombre').value;
+    users[userIndex].role = document.getElementById('edit-tipo-perfil').value;
+    users[userIndex].celular = document.getElementById('edit-celular').value;
+    users[userIndex].correo = document.getElementById('edit-correo').value;
+    const newPassword = document.getElementById('edit-contrasena').value;
+    const confirmPassword = document.getElementById('edit-confirmar-contrasena').value;
+
+    if (newPassword) {
+      if (newPassword === confirmPassword) {
+        users[userIndex].password = newPassword;
+      } else {
+        displayMessage("Las contraseñas no coinciden.", true);
+        return;
+      }
+    }
+
+    saveUsers(users);
+    loadManageUsers();
+    displayMessage("Usuario editado exitosamente.");
+    document.getElementById('edit-user-form-container').style.display = 'none';
+  }
+}
+
+function showDeleteConfirmation() {
+  const selectedUsername = document.getElementById('user-select').value;
+  if (!selectedUsername) {
+    displayMessage("Por favor, seleccione un usuario.", true);
+    return;
+  }
+  document.getElementById('delete-confirmation').style.display = 'block';
+}
+
+function performDeleteUser() {
+  const selectedUsername = document.getElementById('user-select').value;
+  const users = getUsers();
+  const updatedUsers = users.filter(u => u.username !== selectedUsername);
+  saveUsers(updatedUsers);
+  loadManageUsers();
+  displayMessage(`Usuario ${selectedUsername} eliminado.`);
+  document.getElementById('delete-confirmation').style.display = 'none';
+}
+
+function getUsers() {
+  const users = localStorage.getItem('users');
+  return users ? JSON.parse(users) : [{ username: "admin", password: "admin123", role: "admin", active: true }];
+}
+
+function saveUsers(users) {
+  localStorage.setItem('users', JSON.stringify(users));
+}
+
+function logout() {
+  localStorage.clear();
+  window.location.href = "index.html";
+}
+
+function togglePasswordVisibility() {
+  const passwordInput = document.getElementById('edit-contrasena');
+  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordInput.setAttribute('type', type);
+  this.textContent = this.textContent === 'Mostrar' ? 'Ocultar' : 'Mostrar';
+}
+
+function toggleConfirmPasswordVisibility() {
+  const passwordInput = document.getElementById('edit-confirmar-contrasena');
+  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordInput.setAttribute('type', type);
+  this.textContent = this.textContent === 'Mostrar' ? 'Ocultar' : 'Mostrar';
+}
+
+// Cargar la sección de registro por defecto
+loadSection('register');
