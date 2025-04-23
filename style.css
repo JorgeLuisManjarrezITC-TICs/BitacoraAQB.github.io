@@ -161,7 +161,7 @@ form button:hover {
 .main-content {
   flex-grow: 1;
   padding: 40px;
-  background-color: #ffffff;
+  background-color: #007CBB;
   overflow-y: auto;
   display: flex; /* Añadido para centrar el login-box */
   justify-content: center; /* Centrar horizontalmente */
