@@ -1,7 +1,7 @@
 const form = document.getElementById('registerForm');
 const msg = document.getElementById('msg');
 
-localStorage.setItem("username", user.username); // Guardar
+localStorage.setItem("username", username.username); // Guardar
 const username = localStorage.getItem("username"); // Obtener
 
     function logout() {
