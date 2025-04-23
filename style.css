@@ -64,7 +64,7 @@ body {
 .main-content {
   flex-grow: 1; /* Flex-grow de login.txt */
   padding: 40px; /* Padding de login.txt */
-  background-color: #ffffff; /* Background-color de login.txt */
+  background-color: #186cdb; /* Background-color de login.txt */
   overflow-y: auto; /* Overflow-y de login.txt */
 }
 
