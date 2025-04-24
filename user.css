@@ -1,0 +1,63 @@
+/* user.css */
+
+/* Estilos para el contenedor principal que organiza la página */
+.container {
+    display: flex;
+    min-height: 100vh; /* Para que ocupe al menos la altura de la ventana */
+}
+
+/* Estilos para la barra lateral (menú) */
+.sidebar {
+    background-color: #f0f0f0; /* Un color de fondo claro */
+    width: 200px; /* Ancho fijo para la barra lateral */
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Organizar elementos verticalmente */
+    align-items: center; /* Centrar elementos horizontalmente */
+}
+
+/* Estilos para la sección del perfil dentro de la barra lateral */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la imagen de perfil */
+.profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Hacer la imagen circular */
+    object-fit: cover; /* Asegurar que la imagen cubra el círculo sin deformarse */
+    margin-bottom: 10px;
+}
+
+/* Estilos para el nombre del usuario en el perfil */
+.profile h2 {
+    margin-top: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilos para la navegación del menú lateral */
+.sidebar nav {
+    width: 100%;
+}
+
+/* Estilos para los botones del menú lateral */
+.sidebar nav button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: none;
+    background-color: #ddd; /* Un color de fondo suave para los botones */
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #555;
+    transition: background-color 0
