@@ -23,7 +23,7 @@ body {
 /* Estilo de menú lateral (unificado de style.txt y login.txt) */
 .sidebar {
   width: 250px;
-  background: linear-gradient(to bottom, #088a40, #02679c); /* Gradiente de login.txt */
+  background: linear-gradient(to bottom, #088a40, #055829); /* Gradiente de login.txt */
   padding: 30px 20px; /* Padding de login.txt */
   color: white;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Box-shadow de login.txt */
