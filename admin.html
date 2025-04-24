@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Administrador</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard-admin.css">
+    <script type="module" src="dashboard-admin.js"></script>
 </head>
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <h2>Menú</h2>
-      <ul>
-        <li><a href="#">MI UNIDAD</a></li>
-        <li><a href="#" onclick="loadSection('manage')">ADMINISTRAR USUARIO</a></li>
-        <li><a href="#">INGRESAR RECARGA</a></li>
-        <li><a href="#">REGISTRO</a></li>
-        <li><a href="#">CONSULTAS</a></li>
-        <li><a href="#">CAMBIAR CONTRASEÑA</a></li>
-        <li><a href="#" onclick="logout()">CERRAR SESIÓN</a></li>
-      </ul>
-    </aside>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Menú</h2>
+            <ul>
+                <li><a href="#" onclick="loadSection('miUnidad')">MI UNIDAD</a></li>
+                <li><a href="#" onclick="loadSection('manage')">ADMINISTRAR USUARIO</a></li>
+                <li><a href="#" onclick="loadSection('ingresarRecarga')">INGRESAR RECARGA</a></li>
+                <li><a href="#" onclick="loadSection('registro')">REGISTRO</a></li>
+                <li><a href="#" onclick="loadSection('consultas')">CONSULTAS</a></li>
+                <li><a href="#" onclick="loadSection('cambiarContrasena')">CAMBIAR CONTRASEÑA</a></li>
+                <li><a href="#" onclick="logout()">CERRAR SESIÓN</a></li>
+            </ul>
+        </aside>
 
-    <main class="main-content">
-      <div class="login-box">
-          <div id="bienvenida">
-              <img src="imagenes/logo.png" alt="Foto de perfil">
-              <h2>¡Bienvenido!</h2>
-              <h2>Usuario</h2>
-              <p id="nombreUsuario"></p>
-          </div>
-          <div id="fechaActual">
-              <h2>Fecha</h2>
-              <p id="fecha"></p>
-          </div>
-          </div>
-  </main>
-  </div>
-
-  <script src="admin.js"></script>
+        <main class="main-content">
+            <div class="dashboard-welcome">
+                <div id="bienvenida">
+                    <img src="imagenes/logo.png" alt="Foto de perfil del administrador">
+                    <h2>¡Bienvenido!</h2>
+                    <p id="nombreUsuario"></p>
+                </div>
+                <div id="fechaActual">
+                    <h2>Fecha</h2>
+                    <p id="fecha"></p>
+                </div>
+            </div>
+            </main>
+    </div>
 </body>
 </html>
