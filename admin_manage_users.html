@@ -1,117 +1,59 @@
-<h2>Administrar Usuarios</h2>
-<div class="user-actions">
-  <button id="toggle-status-btn">Activar o Desactivar Usuario</button>
-  <button id="delete-user-btn">Eliminar Usuario</button>
-  <button id="edit-user-btn">Editar Usuario</button>
-</div>
-<div class="user-selection">
-  <label for="user-select">SELECCIONE USUARIO</label>
-  <select id="user-select">
-    <option value="">USUARIO...</option>
-  </select>
-</div>
-<div id="delete-confirmation" style="display:none;">
-  <button id="confirm-delete-btn">ELIMINAR</button>
-</div>
-<div id="edit-user-form-container" style="display:none;">
-  <h3>Editar Usuario</h3>
-  <form id="edit-user-form">
-    <label for="edit-nombre">Nombre</label>
-    <input type="text" id="edit-nombre" required>
+<!DOCTYPE html>
+<html lang="es">
 
-    <label for="edit-tipo-perfil">Tipo de Perfil</label>
-    <select id="edit-tipo-perfil">
-      <option value="user">Usuario</option>
-      <option value="admin">Administrador</option>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrar Usuarios</title>
+  <link rel="stylesheet" href="admin_manage_users.css">
+</head>
+
+<body>
+  <h2>Administrar Usuarios</h2>
+  <div class="user-actions">
+    <button id="toggle-status-btn">Activar o Desactivar Usuario</button>
+    <button id="delete-user-btn">Eliminar Usuario</button>
+    <button id="edit-user-btn">Editar Usuario</button>
+  </div>
+  <div class="user-selection">
+    <label for="user-select">SELECCIONE USUARIO</label>
+    <select id="user-select">
+      <option value="">USUARIO...</option>
     </select>
+  </div>
+  <div id="delete-confirmation" style="display:none;">
+    <button id="confirm-delete-btn">ELIMINAR</button>
+  </div>
+  <div id="edit-user-form-container" style="display:none;">
+    <h3>Editar Usuario</h3>
+    <form id="edit-user-form">
+      <label for="edit-nombre">Nombre</label>
+      <input type="text" id="edit-nombre" required>
 
-    <label for="edit-celular">Celular</label>
-    <input type="text" id="edit-celular">
+      <label for="edit-tipo-perfil">Tipo de Perfil</label>
+      <select id="edit-tipo-perfil">
+        <option value="user">Usuario</option>
+        <option value="admin">Administrador</option>
+      </select>
 
-    <label for="edit-correo">Correo</label>
-    <input type="email" id="edit-correo" required placeholder="usuario@dominio.com">
+      <label for="edit-celular">Celular</label>
+      <input type="text" id="edit-celular">
 
-    <label for="edit-contrasena">Contraseña</label>
-    <input type="password" id="edit-contrasena">
-    <button type="button" id="toggle-password-edit">Mostrar</button>
+      <label for="edit-correo">Correo</label>
+      <input type="email" id="edit-correo" required placeholder="usuario@dominio.com">
 
-    <label for="edit-confirmar-contrasena">Confirmar Contraseña</label>
-    <input type="password" id="edit-confirmar-contrasena">
-    <button type="button" id="toggle-confirm-password-edit">Mostrar</button>
+      <label for="edit-contrasena">Contraseña</label>
+      <input type="password" id="edit-contrasena">
+      <button type="button" id="toggle-password-edit">Mostrar</button>
 
-    <button type="submit" id="save-edit-btn">EDITAR</button>
-  </form>
-</div>
-<div id="message-container"></div>
-<style>
-  /* Estilos específicos para admin_manage_users.html */
-  .user-actions {
-    margin-bottom: 20px;
-  }
+      <label for="edit-confirmar-contrasena">Confirmar Contraseña</label>
+      <input type="password" id="edit-confirmar-contrasena">
+      <button type="button" id="toggle-confirm-password-edit">Mostrar</button>
 
-  .user-actions button {
-    margin-right: 10px;
-    padding: 8px 16px;
-    cursor: pointer;
-  }
+      <button type="submit" id="save-edit-btn">EDITAR</button>
+    </form>
+  </div>
+  <div id="message-container"></div>
+</body>
 
-  .user-selection {
-    margin-bottom: 20px;
-  }
-
-  .user-selection label {
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  .user-selection select {
-    width: 200px;
-    padding: 8px;
-  }
-
-  #delete-confirmation {
-    margin-top: 20px;
-  }
-
-  #confirm-delete-btn {
-    background-color: #dc3545;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-
-  #edit-user-form-container {
-    margin-top: 20px;
-  }
-
-  #edit-user-form label {
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  #edit-user-form input,
-  #edit-user-form select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-  }
-
-  #save-edit-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-
-  .mensaje-confirmacion {
-    color: green;
-    margin-top: 10px;
-  }
-
-  .mensaje-error {
-    color: red;
-    margin-top: 10px;
-  }
-</style>
+</html>

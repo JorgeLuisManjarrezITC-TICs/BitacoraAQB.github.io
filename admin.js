@@ -35,23 +35,20 @@ const messageContainer = document.getElementById('message-container');
 
 function loadSection(section) {
   let url = '';
-  if (section === 'register') {
-    url = 'admin_register_user.html';
-    loadRegisterUser();
-  } else if (section === 'manage') {
+  if (section === 'manage') {
     url = 'admin_manage_users.html';
     loadManageUsers();
   }
+  // ... otras secciones (si las hay) ...
 
   fetch(url)
     .then(response => response.text())
     .then(html => {
       contentContainer.innerHTML = html;
-      if (section === 'register') {
-        initRegisterForm();
-      } else if (section === 'manage') {
+      if (section === 'manage') {
         initManageUsers();
       }
+      // ... inicializar otras secciones ...
     })
     .catch(error => {
       console.error('Error al cargar la sección:', error);
@@ -60,32 +57,8 @@ function loadSection(section) {
 }
 
 function displayMessage(message, isError = false) {
-  messageContainer.innerHTML = `<p class="<span class="math-inline">\{isError ? 'mensaje\-error' \: 'mensaje\-confirmacion'\}"\></span>{message}</p>`;
+  messageContainer.innerHTML = `<p class="${isError ? 'mensaje-error' : 'mensaje-confirmacion'}">${message}</p>`;
   setTimeout(() => messageContainer.innerHTML = '', 3000);
-}
-
-function initRegisterForm() {
-  const form = document.getElementById('registerForm');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const username = document.getElementById('newUsername').value.trim();
-      const password = document.getElementById('newPassword').value.trim();
-
-      const users = getUsers();
-
-      if (users.find(u => u.username === username)) {
-        displayMessage("Ese usuario ya existe.", true);
-        return;
-      }
-
-      users.push({ username, password, role: "user", active: true });
-      saveUsers(users);
-
-      displayMessage("Usuario creado exitosamente.");
-      form.reset();
-    });
-  }
 }
 
 function loadManageUsers() {
@@ -249,4 +222,4 @@ function toggleConfirmPasswordVisibility() {
 }
 
 // Cargar la sección de registro por defecto
-loadSection('register');
+loadSection('manage');
